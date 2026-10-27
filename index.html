@@ -1,0 +1,385 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Alyza Abdullah</title>
+<meta name="description" content="Alyza Abdullah: Kinesiology at McGill. Human-centered tools that make the body legible: how it moves, and how it hurts.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Poppins:ital,wght@0,400;0,500;0,600;1,400&display=swap">
+<style>
+/* Layout: one 880px reading column on white; deep teal for anything you can click; light teal bands separate sections.
+   Deliberately a single light theme: white and deep teal, high contrast, larger body text. */
+:root{
+  color-scheme:light;
+  --page:#ffffff; --band:#f2f7f7; --surface:#ffffff;
+  --ink:#0f1f1f; --ink-soft:#33494a; --ink-faint:#566b6c;
+  --line:#d3e2e2; --line-soft:#e4eeee;
+  --teal:#0b5c5f; --teal-deep:#08474a; --teal-soft:#e1f0ef; --teal-line:#a9d1cf;
+  --live:#0b5c5f; --wait:#8a4b0f; --wait-soft:#fbf0e3;
+  --shadow:0 1px 2px rgba(11,60,62,.06), 0 12px 28px -22px rgba(11,60,62,.45);
+  --f-d:"Playfair Display",Georgia,"Times New Roman",serif;
+  --f-b:"Poppins",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:calc(76px + env(safe-area-inset-top,0px))}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+body{margin:0;background:var(--page);color:var(--ink);font-family:var(--f-b);font-size:16px;line-height:1.75;-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:30;background:var(--surface)}
+h1,h2,h3{font-family:var(--f-d);font-weight:500;line-height:1.2;margin:0;text-wrap:balance;color:var(--ink)}
+p{margin:0}
+a{color:var(--teal)}
+:focus-visible{outline:2px solid var(--teal);outline-offset:3px;border-radius:3px}
+.lab{font-size:11.5px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-faint)}
+.wrap{max-width:880px;margin:0 auto;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
+
+/* top bar */
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--surface);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:12px}
+.wordmark{font-family:var(--f-d);font-size:20px;font-weight:600;text-decoration:none;white-space:nowrap;color:var(--ink)}
+.nav{display:flex;align-items:center;gap:2px;flex-wrap:wrap;justify-content:flex-end}
+.nav a{font-size:14px;font-weight:500;color:var(--ink-soft);text-decoration:none;padding:6px 11px;border-radius:3px}
+.nav a:hover{color:var(--teal);background:var(--teal-soft)}
+.nav a.cv{background:var(--teal);color:#ffffff;font-weight:600;padding:7px 17px;margin-left:6px}
+.nav a.cv:hover{background:var(--teal-deep);color:#ffffff}
+@media(max-width:620px){.nav .opt{display:none}.nav{flex-wrap:nowrap}.nav a{padding:6px 8px;font-size:13.5px}.nav a.cv{padding:7px 14px;margin-left:4px}.wordmark{font-size:18px}}
+
+/* hero */
+.hero{background:var(--band);border-bottom:1px solid var(--line)}
+.hero .wrap{display:grid;grid-template-columns:128px 1fr;gap:36px;align-items:start;padding-block:56px 50px}
+.mono{width:128px;height:128px;border-radius:50%;background:var(--surface);border:1px solid var(--teal-line);display:grid;place-items:center;font-family:var(--f-d);font-size:42px;font-weight:500;color:var(--teal);font-style:italic}
+.hero h1{font-size:46px;font-weight:500;letter-spacing:-.01em}
+.role{margin-top:6px;color:var(--ink-soft);font-size:15.5px}
+.role b{font-weight:600;color:var(--ink)}
+.thesis{margin-top:18px;font-size:19px;line-height:1.6;max-width:36em;color:var(--ink)}
+.thesis em{font-style:normal;font-weight:600;color:var(--teal);box-shadow:inset 0 -.38em 0 var(--teal-soft)}
+.applying{margin-top:12px;font-size:14.5px;color:var(--ink-soft)}
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}
+.chip{display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:500;color:var(--teal);background:var(--surface);border:1px solid var(--teal-line);border-radius:100px;padding:7px 16px;text-decoration:none;cursor:pointer;font-family:inherit;line-height:1.4}
+.chip:hover{background:var(--teal-soft)}
+.chip svg{width:14px;height:14px;flex:none}
+.copied{background:var(--teal)!important;color:#ffffff!important;border-color:var(--teal)!important}
+@media(max-width:640px){
+  .hero .wrap{grid-template-columns:1fr;gap:20px;padding-block:36px 34px}
+  .mono{width:80px;height:80px;font-size:28px}
+  .hero h1{font-size:38px}
+  .thesis{font-size:17.5px}
+}
+
+/* stats */
+.stats{border-bottom:1px solid var(--line)}
+.stats .wrap{display:grid;grid-template-columns:repeat(4,1fr)}
+.stat{padding:22px 10px;text-align:center;border-right:1px solid var(--line-soft)}
+.stat:last-child{border-right:none}
+.stat .n{font-family:var(--f-d);font-size:32px;font-weight:600;line-height:1;color:var(--teal);font-variant-numeric:tabular-nums}
+.stat .k{margin-top:9px;font-size:11px;line-height:1.4}
+@media(max-width:640px){.stats .wrap{grid-template-columns:repeat(2,1fr)}.stat:nth-child(2){border-right:none}.stat:nth-child(-n+2){border-bottom:1px solid var(--line-soft)}}
+
+/* sections */
+main section{padding-block:64px}
+main section.alt{background:var(--band);border-block:1px solid var(--line)}
+.shead{margin-bottom:26px}
+.shead h2{font-size:32px}
+.shead p{margin-top:6px;color:var(--ink-soft);font-size:15.5px}
+.sub{margin:40px 0 14px;font-family:var(--f-d);font-size:22px}
+
+/* try cards */
+.try{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+@media(max-width:760px){.try{grid-template-columns:1fr}}
+.tcard{display:flex;flex-direction:column;gap:6px;background:var(--surface);border:1px solid var(--line);border-top:3px solid var(--teal);border-radius:4px;padding:18px 20px 20px;text-decoration:none;color:var(--ink);box-shadow:var(--shadow);transition:transform .15s,box-shadow .15s;min-width:0}
+.tcard:hover{transform:translateY(-2px)}
+.tcard .row{display:flex;align-items:baseline;justify-content:space-between;gap:10px}
+.tcard h3{font-size:24px}
+.tcard .arrow{color:var(--teal);font-size:18px}
+.tcard p{font-size:15px;color:var(--ink-soft);line-height:1.6}
+.tcard .for{margin-top:auto;padding-top:10px;font-size:13.5px;color:var(--teal);font-weight:600}
+
+/* statement */
+.statement{display:flex;flex-direction:column;gap:20px;max-width:66ch}
+.statement p{font-size:16.5px}
+.statement .lead{font-size:18.5px;line-height:1.65}
+.statement b{color:var(--teal);font-weight:600}
+.threads{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:40px}
+@media(max-width:760px){.threads{grid-template-columns:1fr}}
+.thread{background:var(--surface);border:1px solid var(--line);border-radius:4px;padding:20px 22px 22px;display:flex;flex-direction:column;gap:8px;min-width:0}
+.thread h3{font-size:22px}
+.thread .q{font-size:15px;color:var(--ink-soft);line-height:1.6}
+.thread ul{margin:6px 0 0;padding-left:18px;font-size:14.5px;line-height:1.6;display:flex;flex-direction:column;gap:6px}
+.thread li::marker{color:var(--teal)}
+.rules{margin-top:16px;border:1px solid var(--teal-line);background:var(--teal-soft);border-radius:4px;padding:16px 22px;display:flex;flex-wrap:wrap;gap:8px 26px;align-items:baseline}
+.rules span{font-size:15px;color:var(--ink)}
+.rules .lab{color:var(--teal)}
+
+/* work list */
+.works{display:flex;flex-direction:column;gap:16px}
+.work{background:var(--surface);border:1px solid var(--line);border-radius:4px;padding:24px 28px 26px;display:flex;flex-direction:column;gap:10px;box-shadow:var(--shadow)}
+@media(max-width:600px){.work{padding:20px 18px 22px}}
+.work .meta{display:flex;flex-wrap:wrap;gap:6px 12px;align-items:center}
+.pill{font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding:3px 10px;border-radius:2px;white-space:nowrap}
+.pill.live{background:var(--teal-soft);color:var(--live)}
+.pill.wait{background:var(--wait-soft);color:var(--wait)}
+.work h3{font-size:26px}
+.work h3.paper{font-size:22px;line-height:1.35}
+.work .who{font-size:14.5px;color:var(--ink-soft)}
+.work .who b{color:var(--ink);font-weight:600}
+.work p.d{font-size:15.5px;max-width:64ch}
+.tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:2px}
+.tag{font-size:13px;color:var(--teal-deep);background:var(--teal-soft);border-radius:100px;padding:3px 11px}
+.links{display:flex;flex-wrap:wrap;gap:10px;margin-top:6px}
+.btn{font-size:14px;font-weight:600;text-decoration:none;border-radius:3px;padding:8px 18px;border:1px solid var(--teal-line);color:var(--teal);line-height:1.4}
+.btn:hover{background:var(--teal-soft)}
+.btn.go{background:var(--teal);border-color:var(--teal);color:#ffffff}
+.btn.go:hover{background:var(--teal-deep)}
+.cites{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:12px}
+.cites li{background:var(--surface);border:1px solid var(--line);border-left:3px solid var(--teal-line);border-radius:4px;padding:16px 22px;font-size:15px;line-height:1.65}
+.cites b{font-weight:600}
+.cites .t{display:block;font-weight:500;color:var(--ink);margin:3px 0}
+.cites .where{color:var(--ink-soft);font-size:14px}
+.cites .auth{color:var(--ink-soft);font-size:14px}
+
+/* experience */
+.xp{display:grid;grid-template-columns:repeat(3,1fr);gap:30px}
+@media(max-width:760px){.xp{grid-template-columns:1fr;gap:28px}}
+.xp .col{display:flex;flex-direction:column;gap:18px;min-width:0}
+.xp .col > .lab{padding-bottom:9px;border-bottom:2px solid var(--teal);color:var(--teal)}
+.job h3{font-family:var(--f-b);font-size:15.5px;font-weight:600;line-height:1.45}
+.job .org{font-size:14.5px;color:var(--ink-soft);line-height:1.55;margin-top:2px}
+.job .when{font-size:13.5px;color:var(--teal);font-weight:500;margin-top:3px;font-variant-numeric:tabular-nums}
+
+/* news */
+.news{list-style:none;margin:0;padding:0}
+.news li{display:grid;grid-template-columns:104px 1fr;gap:18px;padding:12px 0;border-bottom:1px solid var(--line-soft);font-size:15.5px}
+.news li:last-child{border-bottom:none}
+.news time{font-size:12.5px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--teal);padding-top:2px;font-variant-numeric:tabular-nums}
+@media(max-width:520px){.news li{grid-template-columns:1fr;gap:2px}}
+
+footer{background:var(--teal-deep);color:#d7ecea}
+footer .wrap{padding-block:26px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;font-size:14px}
+footer a{color:#ffffff}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="wordmark" href="#about">Alyza Abdullah</a>
+    <nav class="nav" aria-label="Sections">
+      <a href="#research">Research</a>
+      <a href="#work">Work</a>
+      <a class="opt" href="#experience">Experience</a>
+      <a class="opt" href="#news">News</a>
+      <a class="cv" href="cv.pdf" target="_blank" rel="noopener">CV</a>
+    </nav>
+  </div>
+</header>
+
+<div class="hero" id="about">
+  <div class="wrap">
+    <div class="mono" aria-hidden="true">AA</div>
+    <div>
+      <h1>Alyza Abdullah</h1>
+      <p class="role"><b>BSc Kinesiology</b>, final year · McGill University · Montréal</p>
+      <p class="thesis">I build human-centered tools that make the body <em>legible</em>: how it moves, and how it hurts. I focus on the people standard assessments miss, starting with neurodivergent kids.</p>
+      <p class="applying">Applying to PhD programs in human-centered computing and rehabilitation engineering for Fall 2027.</p>
+      <div class="chips">
+        <button class="chip" id="copyEmail" type="button" title="Copy email address">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><rect x="1.5" y="3" width="13" height="10" rx="1.5"/><path d="M2 4l6 5 6-5"/></svg>
+          <span class="addr">alyza.abdullah@mail.mcgill.ca</span>
+        </button>
+        <a class="chip" href="cv.pdf" target="_blank" rel="noopener">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M4 1.5h5.5L13 5v9.5H4z"/><path d="M9.5 1.5V5H13M6 8.5h5M6 11h5"/></svg>CV
+        </a>
+        <a class="chip" href="https://github.com/alyzaabdullah" target="_blank" rel="noopener">
+          <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 .2a8 8 0 0 0-2.5 15.6c.4 0 .5-.2.5-.4v-1.5c-2.2.5-2.7-1-2.7-1-.4-.9-.9-1.2-.9-1.2-.7-.5.1-.5.1-.5.8.1 1.2.8 1.2.8.7 1.3 1.9.9 2.4.7 0-.5.3-.9.5-1.1-1.8-.2-3.6-.9-3.6-4 0-.9.3-1.6.8-2.1-.1-.2-.4-1 .1-2.1 0 0 .7-.2 2.2.8a7.5 7.5 0 0 1 4 0c1.5-1 2.2-.8 2.2-.8.4 1.1.2 1.9.1 2.1.5.6.8 1.3.8 2.1 0 3.1-1.9 3.8-3.6 4 .3.3.6.8.6 1.5v2.2c0 .2.1.5.6.4A8 8 0 0 0 8 .2z"/></svg>GitHub
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="stats">
+  <div class="wrap">
+    <div class="stat"><div class="n">3</div><div class="lab k">Tools live and public</div></div>
+    <div class="stat"><div class="n">2</div><div class="lab k">IASP 2026 posters</div></div>
+    <div class="stat"><div class="n">1</div><div class="lab k">Solo scoping review</div></div>
+    <div class="stat"><div class="n">3</div><div class="lab k">Research labs</div></div>
+  </div>
+</div>
+
+<main>
+
+  <section id="try">
+    <div class="wrap">
+      <div class="shead"><h2>Try my work</h2><p>All three run in the browser. No sign-up, nothing to install.</p></div>
+      <div class="try">
+        <a class="tcard" href="https://alyzaabdullah.github.io/sync/" target="_blank" rel="noopener">
+          <div class="row"><h3>SYNC</h3><span class="arrow" aria-hidden="true">→</span></div>
+          <span class="lab">Web app · tablet</span>
+          <p>Measures motor coordination through a calm tilt-and-hold game. Misses are never punished.</p>
+          <span class="for">All mine</span>
+        </a>
+        <a class="tcard" href="https://alyzaabdullah.github.io/bloom/" target="_blank" rel="noopener">
+          <div class="row"><h3>BLOOM</h3><span class="arrow" aria-hidden="true">→</span></div>
+          <span class="lab">Web app</span>
+          <p>AI literacy for ages 11 to 14. Answer first, then decide whether the machine got it right.</p>
+          <span class="for">Built for HerWILL</span>
+        </a>
+        <a class="tcard" href="https://alyzaabdullah.github.io/circle-log/" target="_blank" rel="noopener">
+          <div class="row"><h3>Circle Log</h3><span class="arrow" aria-hidden="true">→</span></div>
+          <span class="lab">Web app · phone · FR / EN</span>
+          <p>A one-minute practice log between social-skills sessions, with a view for facilitators.</p>
+          <span class="for">Built for Autisme sans limites</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section id="research" class="alt">
+    <div class="wrap">
+      <div class="shead"><h2>Research</h2><p>Tools that measure people without making them feel measured.</p></div>
+      <div class="statement">
+        <p class="lead">I'm a final-year Kinesiology student at McGill. I work where movement science, pain research and human-centered computing meet, and I build the tools I wish existed for the people I work with.</p>
+        <p><b>Movement.</b> Motor difficulties show up across many conditions, from developmental coordination disorder to Parkinson's disease. They're usually measured with long, examiner-run assessments given months apart, and between those snapshots progress is guesswork. SYNC is my first attempt at filling that gap: short, play-based sessions that record the same measures the same way every time. I started with autistic children, the group my scoping review covers.</p>
+        <p><b>Pain.</b> In the lab, I run behavioural experiments in translational models of long COVID and fibromyalgia pain. Pain is hard to measure in anyone who can't easily describe it: young children, people who communicate differently, people living with dementia. Tools built on self-report miss them. That is the direction I want to take in a PhD.</p>
+        <p><b>Learning.</b> I also build learning tools. BLOOM teaches kids to judge AI answers rather than simply trust them, and Circle Log helps adults in a social-skills program keep practising between sessions.</p>
+        <p>Long term, I want to build assistive technology for people with neurodevelopmental and neurodegenerative conditions, and get it to everyone who needs it, not just the people who live near a research clinic.</p>
+      </div>
+
+      <div class="threads">
+        <div class="thread">
+          <span class="lab">Thread 1</span>
+          <h3>How it moves</h3>
+          <p class="q">How do you track motor skills between formal assessments?</p>
+          <ul><li>SYNC: continuous, play-based measurement</li><li>Scoping review of praxis, sensory-motor integration and interventions</li></ul>
+        </div>
+        <div class="thread">
+          <span class="lab">Thread 2</span>
+          <h3>How it hurts</h3>
+          <p class="q">How do you recognize pain in someone who can't easily report it?</p>
+          <ul><li>Preclinical pain research in two McGill labs</li><li>Planned PhD direction: detecting and communicating pain beyond self-report</li></ul>
+        </div>
+        <div class="thread">
+          <span class="lab">Thread 3</span>
+          <h3>Who stays in charge</h3>
+          <p class="q">How do you build tech that people judge, rather than just trust?</p>
+          <ul><li>BLOOM: kids catch confidently wrong AI answers</li><li>Circle Log: participants log their own practice, and the data stays on their phone</li></ul>
+        </div>
+      </div>
+      <div class="rules">
+        <span class="lab">House rules</span>
+        <span>No accounts.</span><span>No ads.</span><span>No data leaving the device.</span><span>No red screens for a kid who missed.</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="work">
+    <div class="wrap">
+      <div class="shead"><h2>Selected work</h2></div>
+      <div class="works">
+        <article class="work">
+          <div class="meta"><span class="lab">Scoping review · 2026</span><span class="pill wait">Preprint submitted · DOI soon</span></div>
+          <h3 class="paper">Motor Coordination Difficulties in Autistic Children Aged 6–12: A Scoping Review of Praxis, Sensory-Motor Integration, and Interventions</h3>
+          <p class="who"><b>Alyza Abdullah</b> · sole author</p>
+          <p class="d">Maps how motor difficulties in autistic children are assessed, which interventions are used, and where the evidence that they work runs thin. Its findings shaped SYNC's design.</p>
+        </article>
+
+        <article class="work">
+          <div class="meta"><span class="lab">Measurement tool · Aug 2026 – now</span><span class="pill live">Live</span></div>
+          <h3>SYNC</h3>
+          <p class="who">Designed and built solo</p>
+          <p class="d">A tablet game that measures motor coordination. Kids tilt to guide a light onto a target in time with a soft beat, then hold it there. The child just plays; the therapist gets the data.</p>
+          <p class="d">The aim is a standardized measure that tracks motor skills continuously alongside intervention. Next steps are test-retest reliability and validation against the BOT-2/BOT-3.</p>
+          <div class="tags"><span class="tag">Hit rate</span><span class="tag">Target accuracy</span><span class="tag">Reaction time</span><span class="tag">Movement time</span><span class="tag">Beat offset</span><span class="tag">Fitts index</span><span class="tag">Raw tilt and motion data</span></div>
+          <div class="links"><a class="btn go" href="https://alyzaabdullah.github.io/sync/" target="_blank" rel="noopener">Try it</a><a class="btn" href="https://github.com/alyzaabdullah/sync" target="_blank" rel="noopener">Code</a></div>
+        </article>
+
+        <article class="work">
+          <div class="meta"><span class="lab">Learning tool · 2026</span><span class="pill live">Live</span></div>
+          <h3>BLOOM</h3>
+          <p class="who">Designed and built for HerWILL</p>
+          <p class="d">AI literacy for learners aged 11 to 14. Learners commit to an answer before seeing the machine's, flag the tells of a broken answer, and judge an AI's plan.</p>
+          <p class="d">A matched check-in and check-out measure whether they got better at telling sound answers from broken ones, rather than just more suspicious of everything.</p>
+          <div class="links"><a class="btn go" href="https://alyzaabdullah.github.io/bloom/" target="_blank" rel="noopener">Try it</a><a class="btn" href="https://github.com/alyzaabdullah/bloom" target="_blank" rel="noopener">Code</a></div>
+        </article>
+
+        <article class="work">
+          <div class="meta"><span class="lab">Web app for phones · Sep 2026 – now</span><span class="pill live">Facilitator test version</span></div>
+          <h3>Circle Log</h3>
+          <p class="who">Co-designed with program staff at Autisme sans limites</p>
+          <p class="d">A practice log for a social-skills group. Participants note what they practised in about a minute. Facilitators walk into the next session knowing who practised, what everyone is working toward, and who wants a call partner.</p>
+          <p class="d">French first, with English a tap away.</p>
+          <div class="links"><a class="btn go" href="https://alyzaabdullah.github.io/circle-log/" target="_blank" rel="noopener">Try it</a><a class="btn" href="https://github.com/alyzaabdullah/circle-log" target="_blank" rel="noopener">Code</a></div>
+        </article>
+      </div>
+
+      <h3 class="sub">Posters and abstracts</h3>
+      <ul class="cites">
+        <li><span class="where">Poster · IASP World Congress on Pain, Bangkok · Oct 2026</span><span class="t">Plasma transfer from long COVID patients induces persistent mechanical hypersensitivity in mice</span><span class="auth">Surbey C, Wong M, <b>Abdullah A</b>, Zhou S, Falcone EL, Diatchenko L, Lima LV</span></li>
+        <li><span class="where">Poster · IASP World Congress on Pain, Bangkok · Oct 2026</span><span class="t">Modeling fibromyalgia in mice via patient plasma transfer: Persistent hyperalgesia and affective symptoms</span><span class="auth">Wong M, Lima LV, Vandermarcq T, Jahangiri Esfahani S, <b>Abdullah A</b>, Kawas L, Diatchenko L</span></li>
+        <li><span class="where">Abstract submitted · QPRN Annual Meeting · Jan 2027</span><span class="t">Plasma transfer from long COVID patients induces persistent mechanical hypersensitivity in mice</span><span class="auth">Surbey C, Wong M, <b>Abdullah A</b>, Zhou S, Falcone EL, Diatchenko L, Lima LV</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="experience" class="alt">
+    <div class="wrap">
+      <div class="shead"><h2>Experience</h2></div>
+      <div class="xp">
+        <div class="col">
+          <span class="lab">Research</span>
+          <div class="job"><h3>Research Assistant, Human Pain Genetics Lab</h3><p class="org">PI: Dr. Luda Diatchenko · Alan Edwards Centre for Research on Pain</p><p class="when">Jan 2026 – now</p></div>
+          <div class="job"><h3>Research Assistant, MOGILab</h3><p class="org">PI: Dr. Jeffrey Mogil · Alan Edwards Centre for Research on Pain</p><p class="when">Aug 2025 – Dec 2025</p></div>
+          <div class="job"><h3>Research Assistant, Language, Memory &amp; Brain Lab</h3><p class="org">ARiEAL · Hamilton</p><p class="when">May 2024 – Aug 2024</p></div>
+        </div>
+        <div class="col">
+          <span class="lab">Clinical and community</span>
+          <div class="job"><h3>Adapted Physical Activity Practicum</h3><p class="org">EDKP 396, McGill. One-on-one with a young autistic child, designing and evaluating a physical-activity plan.</p><p class="when">Sep 2026 – Dec 2026</p></div>
+          <div class="job"><h3>Neurological ICU Volunteer</h3><p class="org">Montreal Neurological Institute</p><p class="when">Oct 2024 – now</p></div>
+        </div>
+        <div class="col">
+          <span class="lab">Work and service</span>
+          <div class="job"><h3>Research and Strategy Intern</h3><p class="org">HerWILL Global, remote. Built BLOOM; grant research and writing.</p><p class="when">May 2025 – now</p></div>
+          <div class="job"><h3>Member and Mentor</h3><p class="org">Canadian Association of Global Health, McGill Chapter</p><p class="when">Oct 2024 – now</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="news">
+    <div class="wrap">
+      <div class="shead"><h2>News</h2></div>
+      <ul class="news">
+        <li><time datetime="2026-10">Oct 2026</time><span>SYNC, BLOOM and Circle Log are now live and public, code included.</span></li>
+        <li><time datetime="2026-10">Oct 2026</time><span>Two posters I co-authored are being presented at the IASP World Congress on Pain in Bangkok.</span></li>
+        <li><time datetime="2026-10">Oct 2026</time><span>Submitted my scoping review on motor coordination in autistic children as a preprint.</span></li>
+        <li><time datetime="2026-09">Sep 2026</time><span>Started building Circle Log with Autisme sans limites.</span></li>
+        <li><time datetime="2026-08">Aug 2026</time><span>Started building SYNC.</span></li>
+        <li><time datetime="2026-01">Jan 2026</time><span>Joined the Human Pain Genetics Lab at the Alan Edwards Centre for Research on Pain.</span></li>
+        <li><time datetime="2025-08">Aug 2025</time><span>Joined MOGILab for preclinical fibromyalgia pain research.</span></li>
+        <li><time datetime="2025-05">May 2025</time><span>Joined HerWILL Global as a Research and Strategy Intern.</span></li>
+      </ul>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Alyza Abdullah · Montréal</span>
+    <span><a href="https://github.com/alyzaabdullah" target="_blank" rel="noopener">github.com/alyzaabdullah</a></span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var b=document.getElementById('copyEmail'), a=b.querySelector('.addr'), addr=a.textContent;
+  function done(){a.textContent='Copied';b.classList.add('copied');setTimeout(function(){a.textContent=addr;b.classList.remove('copied');},1600);}
+  function fallback(){var r=document.createRange();r.selectNodeContents(a);var s=getSelection();s.removeAllRanges();s.addRange(r);}
+  b.addEventListener('click',function(){
+    if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(addr).then(done,fallback);}else{fallback();}
+  });
+})();
+</script>
+</body>
+</html>
